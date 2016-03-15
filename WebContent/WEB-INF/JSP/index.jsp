@@ -1,13 +1,15 @@
 <%-- Een welkom pagina --%>
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
+<%@taglib uri='http://vdab.be/tags' prefix='vdab'%>
 <!DOCTYPE html>
 <html lang='nl'>
 <head>
-<c:import url='/WEB-INF/JSP/head.jsp'><c:param name='title' value='Pizza Luigi'/></c:import>
+<vdab:head title="Welkom"/>
 </head>
 <body>
-<c:import url='/WEB-INF/JSP/menu.jsp'/>
+<vdab:menu/>
 <h1>Pizza Luigi</h1>
 <img src="images/pizza.jpg" alt="pizza" class="fullwidth">
 <h2>${begroeting}</h2>
@@ -17,8 +19,11 @@
 <dt>Aantal kinderen</dt><dd>${zaakvoerder.aantalKinderen}</dd>
 <dt>Gehuwd</dt><dd>${zaakvoerder.gehuwd ? "ja" : "nee"}</dd>
 <dt>Adres</dt><dd>${zaakvoerder.adres.straat} ${zaakvoerder.adres.huisNr}<br>
-${zaakvoerder.adres.postcode} ${zaakvoerder.adres.gemeente}</dl>
+${zaakvoerder.adres.postcode} ${zaakvoerder.adres.gemeente}
+<dt>Aantal pizza's verkocht</dt>
+<dd><fmt:formatNumber value='${aantalPizzasVerkocht}'/></dl>
 <div>Deze pagina werd ${aantalKeerBekeken} keer bekeken. </div>
 <div>Webmaster: <a href='mailto:${emailAdresWebMaster}'>${emailAdresWebMaster}</a></div>
+<div>Vandaag: <fmt:formatDate value="${nu}" type='date' dateStyle='long'/></div>
 </body>
 </html>

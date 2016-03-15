@@ -1,15 +1,14 @@
 <%@ page contentType="text/html" 
     pageEncoding="UTF-8" session="false"%>
       <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
+      <%@taglib uri='http://vdab.be/tags' prefix='vdab'%>
 <!DOCTYPE html>
 <html lang='nl'>
 <head>
-<c:import url='/WEB-INF/JSP/head.jsp'>
-<c:param name='title' value='Pizzas tussen prijzen'/>
-</c:import>
+<vdab:head title="Pizza's tussen prijzen"/>
 </head>
 <body>
-<c:import url='/WEB-INF/JSP/menu.jsp'/>
+<vdab:menu/>
 <h1>Pizza's tussen prijzen</h1>
 <form>
 <label>Van prijs<span>${fouten.van}</span><input name='van' value='${param.van}' autofocus type='number' min='0' required></label>

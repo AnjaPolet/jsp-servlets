@@ -20,6 +20,10 @@ public class CookieServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String locale = request.getParameter("locale");
+		if(locale!=null) {
+			request.getSession().setAttribute("locale", locale);
+		}
 		if (request.getCookies() != null) {
 			for (Cookie cookie : request.getCookies()){
 				if ("naam".equals(cookie.getName())) {
@@ -33,7 +37,7 @@ public class CookieServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		
 		Cookie cookie = new Cookie("naam",URLEncoder.encode(request.getParameter("naam"), "UTF-8"));
 		cookie.setMaxAge(COOKIE_MAXIMUM_LEEFTIJD);
 		response.addCookie(cookie);

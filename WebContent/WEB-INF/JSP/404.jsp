@@ -5,12 +5,12 @@
 <!DOCTYPE html>
 <html lang='nl'>
 <head>
-<vdab:head title="Headers"/>
+<vdab:head title='Pagina niet gevonden'/>
 </head>
 <body>
 <vdab:menu/>
-<dl>
-<c:forEach var='h' items='${headers}'>
-<dt>${h.key}</dt><dd>${h.value}</dd></c:forEach></dl>
+<h1>Pagina niet gevonden</h1>
+<img src='<c:url value="/images/fout.jpg"/>' alt='fout'>
+<p>De pagina die u zocht bestaat niet op onze website.</p>
 </body>
 </html>
