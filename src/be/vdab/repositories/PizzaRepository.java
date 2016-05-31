@@ -78,10 +78,11 @@ public class PizzaRepository extends AbstractRepository {
 
 	public void create(Pizza pizza) {
 		try (Connection connection = dataSource.getConnection();
-				PreparedStatement statement = connection.prepareStatement(CREATE_SQL)) {
+				PreparedStatement statement = connection.prepareStatement(CREATE_SQL,Statement.RETURN_GENERATED_KEYS)) {
 			statement.setString(1, pizza.getNaam());
 			statement.setBigDecimal(2, pizza.getPrijs());
 			statement.setBoolean(3, pizza.isPikant());
+			statement.executeUpdate();
 			try (ResultSet resultSet = statement.getGeneratedKeys()) {
 				resultSet.next();
 				pizza.setId(resultSet.getLong(1));

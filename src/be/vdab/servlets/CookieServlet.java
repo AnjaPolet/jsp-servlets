@@ -37,7 +37,7 @@ public class CookieServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//filter doet request.setCharacterEncoding("UTF-8")
 		Cookie cookie = new Cookie("naam",URLEncoder.encode(request.getParameter("naam"), "UTF-8"));
 		cookie.setMaxAge(COOKIE_MAXIMUM_LEEFTIJD);
 		response.addCookie(cookie);
